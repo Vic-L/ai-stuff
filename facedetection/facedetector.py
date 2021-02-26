@@ -42,13 +42,13 @@ for i in range(100):
     cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 4)
 
     face = frame[y:y+h, x:x+w]
-    cv2.imshow('face', face)
-    cv2.waitKey(1000)
     grayscale_face = cv2.cvtColor(face, cv2.COLOR_BGR2GRAY)
     smile_coordinates = smile_face_data.detectMultiScale(grayscale_face, minNeighbors=20, scaleFactor=1.7)
 
-    for (_x, _y, _w, _h) in smile_coordinates:
-      cv2.rectangle(frame, (x + _x, y + _y), (x + _x + _w, y + _y + _h), (255, 0, 0), 4)
+    # for (_x, _y, _w, _h) in smile_coordinates:
+    #   cv2.rectangle(frame, (x + _x, y + _y), (x + _x + _w, y + _y + _h), (255, 0, 0), 4)
+    if len(smile_coordinates) > 1:
+      cv2.putText(frame, 'www', (x, y + h + 20), fontFace=cv2.FONT_HERSHEY_PLAIN, color=(255,0,0), fontScale=3, thickness=3)
 
   cv2.imshow('test', frame)
   cv2.waitKey(10)
