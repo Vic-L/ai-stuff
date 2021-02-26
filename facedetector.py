@@ -20,7 +20,8 @@ trained_face_data = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 #   cv2.waitKey()
 
 # VIDEO & CAMERAS
-webcam = cv2.VideoCapture(0)
+# webcam = cv2.VideoCapture(0)
+webcam = cv2.VideoCapture('faces.mp4')
 
 for i in range(100):
   status, frame = webcam.read()
@@ -31,6 +32,6 @@ for i in range(100):
     cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 4)
 
   cv2.imshow('test', frame)
-  cv2.waitKey(100)
+  cv2.waitKey(10)
 
 print("finish")
